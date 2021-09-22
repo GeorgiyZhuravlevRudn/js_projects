@@ -1,0 +1,79 @@
+*
+{
+        font-family: 'Times New Roman', Times, serif;
+}
+
+
+.main-header{
+        font-size:150px;
+        max-width: 100%;
+        place-items: center;
+        align-items: center;
+        justify-content: center;
+        margin:10% auto;
+        margin-bottom:0;
+        font-family: Ubuntu;
+}
+main{
+        
+        align-items: center;
+        justify-content: center;
+        margin:8% auto;
+        max-width: 100%;
+        place-items: center;  
+        display:grid; 
+        text-align: center;  
+}
+.number{
+        margin: auto;
+        font-size: 170px;
+        font-weight: bold;
+}
+.ctrl-btns{
+        margin-top:10%;
+        margin-right:24%;
+        list-style:none;
+        display:flex;
+        place-items: center;  
+        align-items: center;
+        
+}
+
+.ctrl-item{
+        margin:3%;
+        display:grid;
+        place-items: center;  
+        display:grid; 
+}
+
+.btn {
+        text-transform: uppercase;
+        background: transparent;
+        color: var(--clr-black);
+        padding: 0.375rem 0.75rem;
+        letter-spacing: var(--spacing);
+        transition: var(--transition);
+        font-size: 40px;
+        border: 2px solid rgba(123, 123, 123, 0.576);
+        cursor: pointer;
+        box-shadow: 0 6px 3px rgba(0, 0, 0, 0.2);
+        margin: 0;
+      }
+.btn:hover {
+        color: rgba(255, 255, 255, 0.829);
+        background: rgb(0, 0, 0);
+        transition: all 0.4s ease-in-out;
+}
+.btn:active{
+        transition: all 0.1s ease;
+        color: rgba(0, 0, 0, 0.829);
+}
+.btn-decrease:active{
+        background: rgb(255, 0, 0);
+}
+.btn-increase:active{
+        background: rgb(22, 255, 1);
+}
+.btn-reset:active{
+        background: rgb(105, 83, 243);
+}
