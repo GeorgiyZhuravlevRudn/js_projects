@@ -43,6 +43,7 @@ main
         align-items:center;
         place-items: center;
         max-width:100%;
+        min-height:100%;
         padding:10px;
         background:rgba(255, 255, 255, 0.631);
         box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.542); /* offset-x | offset-y | blur-radius | spread-radius | color */
@@ -56,6 +57,7 @@ main
         margin: 10px auto;
         margin-bottom: 20px;
 }
+
 #person-img{
         width: 150px;
         height: 150px;
