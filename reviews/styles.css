@@ -1,0 +1,117 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body
+{
+        background-size:100%;
+        background: rgba(255, 255, 255, 0.59);
+        /*background: radial-gradient(circle, rgba(245,224,255,1) 49%, rgba(139, 199, 255, 0.782) 83%);*/
+}
+main 
+{
+        min-height: 100vh;
+        display: grid;
+        place-items: center;/*place all items in center*/
+}
+.container
+{
+        text-align: center;
+        width: 100%;
+        max-width:600px;
+        align-items: center;
+
+}
+.title{
+        font-size:200%;
+        text-align: center;
+        text-decoration:none;
+}
+.underline{
+        margin-top:5%;
+        margin-bottom:5%;
+        height: 2.3px;
+        width: 200px;
+        background: black;
+        margin-left: auto;
+        margin-right: auto;
+}
+.container-review{
+        align-items:center;
+        place-items: center;
+        max-width:100%;
+        padding:10px;
+        background:rgba(255, 255, 255, 0.631);
+        box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.542); /* offset-x | offset-y | blur-radius | spread-radius | color */
+        box-sizing: border-box;
+        border-radius: 4px;
+}
+.container-img{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 10px auto;
+        margin-bottom: 20px;
+}
+#person-img{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0 auto;
+        margin-bottom: 1.5rem;
+}
+.author-name{
+        font-size:25px;
+        font-weight: bold;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow';
+}
+#author-job{
+        font-size: 20px;
+        color:rgba(41, 41, 41, 0.617);
+        text-decoration:none;
+}
+#author-review{
+        font-weight:normal;
+        font-size:13px;
+        margin-top:7px;
+        margin-bottom: 7px;
+        padding:10px;
+        text-align:center;
+        background-color: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 0px 1px 1px black;
+        
+}
+.button-container{
+        align-items: center;
+        margin-bottom:5px;
+}
+.chev-right{
+        margin-left:20px;
+}
+.btn-text{
+        font-weight: bold;
+        color:rgba(0, 0, 0, 0.679);
+        font-size:18px;
+        border-color:transparent;
+}
+.btn{
+        border:none;
+        background:none;
+}
+.btn-text:hover{
+        color:rgb(255, 255, 255);
+        background-color:rgba(0, 0, 0, 0.35);
+        transition:all 0.3s ease-in-out;
+        padding:3px;
+        border-radius:10px;
+}
+.btn-text:active{
+        color:rgb(255, 255, 255);
+        background-color:rgba(0, 0, 0, 0.35);
+        transition:all 0.15s ease-in-out;
+        border-radius:30px;
+        padding:20px;
+}
