@@ -26,6 +26,7 @@ main{
 }
 .number{
         margin: auto;
+        color:black;
         font-size: 170px;
         font-weight: bold;
 }
