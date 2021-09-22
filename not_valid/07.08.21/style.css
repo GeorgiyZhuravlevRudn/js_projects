@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url('');
+
+*{
+        box-sizing: border-box;
+        font-family: Montserrat,sans-serif;
+        color: #000;
+
+}
+
+*::selection{
+        background-color:#fff238b8;
+}
+body{
+        background-color:#FFF338;
+}
+
+.main-header{
+        margin-top:20px;
+        margin-left:auto;
+        margin-right:auto;
+        display: flex;
+        width: 90%;
+        align-items:center;
+        background-color:#C2FFD9;
+        border-radius: 30px;
+        align-items:center;
+}
+.logo-container{
+
+}
+.logo{
+        font-size:30px;
+        font-family:;
+        text-decoration:underline;
+        margin-left:20px;
+        font-weight:bold;
+}
+.links{
+        margin-left:20%;
+}
+.nav-links{
+        align-items:flex-start;
+        text-decoration: none;
+        list-style: none;
+        display:flex;
+        justify-content: space-around;
+        margin: 20px;
+        
+}
+.nav-link{
+        font-size:30px;
+        margin:20px;
+        text-decoration:none;
+        
+}
+.nav-link:hover{
+        background-color: #FFF338;
+        padding:5px;
+        border-radius: 10px;
+}
+.nav-link:active{
+        background-color:#000000;
+        color:#FFF338;
+}
+.login-link{
+        font-size: 35px;
+        margin-left:17%;
+        text-decoration:bold;
+}
+.content{
+        display:flex;
+        width:80%;
+        margin-top:20px;
+        margin-left:auto;
+        margin-right:auto;
+        border-radius: 30px;
+        background-color:#C2FFD9;
+}
+.text{
+        width:80%;
+        height:80%;
+        margin:auto;
+        font-size:26px;
+        line-height: 39px;
+        max-width:60%; 
+}
+.image{
+        display:flex;
+        border-radius:30px;
+        width:10%;
+        margin:0;
+}
+
+.text::first-line{
+        margin-bottom: 200px;
+        font-size:30px;
+        font-weight:bold;
+}
+.main-footer{
+        margin-top:20px;
+        margin-left:auto;
+        margin-right:auto;
+        display: flex;
+        width: 90%;
+        align-items:center;
+        background-color:#C2FFD9;
+        border-radius: 30px;
+        align-items:center;
+}
+.foot-links{
+        display: inline-block;
+        text-decoration: none;
+}
+.foot-link{
+        text-decoration: none;
+        display:flex;
+}
+.foot-link:hover{
+        background-color: #FFF338;
+        padding:1.5px;
+        border-radius: 10px;
+}
+.resources{
+        text-align:top;
+        font-size:20px;
+}

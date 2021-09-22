@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+*{
+        box-sizing: border-box;
+        font-family: Montserrat, sans-serif;
+        color: #777;
+}
+html,body
+{
+        margin: 0;
+        padding:0;
+}
+.main-header{
+        background-image: url("images/logo.jpg");
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.671);
+        background-blend-mode: multiply;
+        padding-bottom: 30px;
+        font-size:30px;
+        color:white;
+        text-align:center;
+        font-weight:normal;
+        
+        
+}
+.main-nav ul{
+        background-color: rgba(107, 0, 150, 0.686);
+       
+        
+}
+.nav li{
+        display: inline;
+        
+}
+.nav a{
+        display: inline-block;
+        padding: .5em;
+        border-radius:20px;
+        color:rgb(255, 255, 255);
+        text-decoration: none;
+        
+}
+
+.nav a:hover{
+        background-color: rgba(224, 68, 245, 0.425);
+        padding: 1.4%;
+        margin: 0%;
+}
+.nav a:active{
+       background-color: rgb(255, 130, 255);
+       color:rgb(0, 0, 0);   
+}
+.main-nav li:nth-child(1)
+{
+        
+}
+.main-nav li{
+        padding: 0%;
+        
+}
+.main-nav {
+        
+        text-align: left;
+        font-size: 30px;
+        font-weight:normal;
+        border-bottom:1px solid rgba(255, 255, 255, 0.575);
+}
+.nav ul{
+ margin:0;
+
+}
+.name{
+        text-align: center;
+        margin:0;
+        font-size:100px;
+        font-family: 'Architects Daughter';
+        color: white;
+        font-weight:normal;
+}
+.name-large{
+        font-size: 120 px;
+}
+.content-section{
+        margin: 1em;
+}
+.container
+{
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.5em;
+}
+.section-header{
+        font-weight:normal;
+        font-family: 'Architects Daughter';
+        text-align: center;
+        color: rgba(0, 0, 0, 0.795);
+        font-size:30px;
+}
+.cat-image{
+        float:left;
+        height:300px;
+        width:300px;
+        margin:1%;
+        border-radius: 60%;
+}
+.buy-button{
+        padding:3%;
+        margin:0;
+        font-size:20px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.336);
+        color: rgb(255, 131, 228);
+        background-color: rgba(0, 0, 0, 0.254);
+        border-radius: 30px;
+}
+.buy-button:focus-within{
+        background-color:rgba(253, 49, 253, 0.562);
+        color: rgb(0, 0, 0);
+
+}
+.main-footer{
+        background-color:rgb(255, 156, 233);
+        color: white;
+        padding: .25em 0;
+}
+.main-footer-container{
+        display:flex;
+        align-items: center;
+}
+.main-footer-container ul{
+        flex-grow: 1;
+        text-align:end;
+}
+.footer-nav li{
+        padding:0.5em;
+}
+.footer-nav img{
+        width:30px;
+        height:30px;
+}
+p::selection
+{
+        background-color:aqua;
+}
+p {
+        text-decoration:none;
+        font-size: 20px;
+        justify-content: center;
+}
