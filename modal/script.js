@@ -1,4 +1,4 @@
-const modalOpen=document.querySelector(".modal-open");
+const modalOpen=document.querySelector(" .modal-open");
 const modalClose = document.querySelector(".modal-close");
 
 const popUp = document.querySelector(".modal-overlay");
