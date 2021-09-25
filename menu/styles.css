@@ -40,11 +40,28 @@ body{
 .filter-btn:hover{
         background-color:rgba(255, 255, 255, 0.638);
         cursor:pointer;
+        animation: scale 1.2s infinite alternate;
 }
 .filter-btn:active{
+        color:black;
+        animation:aside 0.4s alternate;
+}
+@keyframes scale {
+        from{
+                transform: scale(1,1);
+        }
+        to {
+                transform: scale(1.5,1.5);
+        }    
+}
+@keyframes aside {
+        from{
+                transform: scale(1.5,1.5) rotate3d(0,20,0,360deg);
+        }
+        to{
+                transform:scale(1,1) rotate3d(0,0,0,0deg);
+        }
         
-        transform: skew(20deg,10deg)  ;
-        transition:all 0.3s ease;
 }
 .title{
         margin: 0 auto;
@@ -59,7 +76,23 @@ body{
         font-size:70px;
         margin: 0 auto;
         color: rgba(0, 0, 0, 0.782);
-        text-decoration: underline;
+        
+}
+.header-hr{
+        animation: underline 10s infinite alternate;
+        width:100px;
+        height:3px;
+        border-radius:5px;
+        border:none;
+        background-color: rgba(0, 0, 0, 0.48);
+}
+@keyframes underline{
+        from{
+                width:100px;
+        }
+        to{
+                width:1000px;
+        }
 }
 
 .items{
@@ -117,6 +150,16 @@ body{
         font-weight: bold;
         color:rgba(0, 0, 0, 0.829);
         font-family:'Franklin Gothic';
+        animation:bounce 4s infinite alternate;
+        
+}
+@keyframes bounce {
+        from {
+                transform: translateY(0px) skew(5deg,0deg);
+              }
+        to {
+                transform: translateY(-15px) skew(0deg,0deg);
+              } 
 }
 .item-price{
         padding-bottom:10px;

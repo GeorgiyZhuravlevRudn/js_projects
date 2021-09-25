@@ -29,7 +29,7 @@ const menu = [
         price: 22.22,
         img:"img/pizza.jpeg",
         description:" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-        category: "lowCarb",
+        category: "LowCarb",
 },
 {
         id:5,
@@ -37,7 +37,7 @@ const menu = [
         price: 12.50,
         img:"img/menu-item.jpeg",
         description:" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-
+        category: "LowCarb",
 },
 {
         id:6,
@@ -45,7 +45,7 @@ const menu = [
         price: 5.00,
         img:"img/burger.jpg",
         description:" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-
+        category: "LowCarb",
 },
 {
         id:7,
@@ -53,7 +53,7 @@ const menu = [
         price: 10.99,
         img:"img/fried-chicken.jpg",
         description:" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-
+        category: "Breakfast",
 },
 {
         id:8,
@@ -61,7 +61,7 @@ const menu = [
         price: 22.22,
         img:"img/pizza.jpeg",
         description:" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-
+        category: "LowCarb",
 },
 ];
 
@@ -95,6 +95,7 @@ function displayMenuItems(menuItems)
         displayItems=displayItems.join('');
         Items.innerHTML=displayItems;
 }
+
 function displayButtons()
 {
         const categories = menu.reduce(function(val,item)//categories=val["All",etc.]
@@ -105,7 +106,7 @@ function displayButtons()
         },
         ["All"]
         ); // array of all categories
-        
+        console.log(categories);
         const display = categories.map(function(category)
         {
                 return `<button type="button" class="filter-btn" data-id=${category}>
