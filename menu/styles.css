@@ -1,0 +1,168 @@
+body{
+        display:grid;
+        align-items:center;
+        height:100%;
+        width:100%;
+        grid-template-rows: 100%;
+        grid-template-columns: 100%;
+        place-items: center;
+        background-color:#ECE7B4;
+}
+.menu
+{
+        height:auto;
+        width:auto;
+        max-height: 1400px;
+        max-width: 1400px;
+        background-color: transparent;
+        display:block;
+        justify-content: space-between;
+        place-items: center;
+
+}
+.btn-container{
+        display:flex;
+        width:500px;
+        margin:0 auto;
+        margin-bottom:30px;
+        justify-content: space-between;
+        place-items: center;
+        align-items: center;
+}
+.filter-btn{
+        border-radius:5px;
+        margin:0 auto;
+        border:2px solid rgba(0, 0, 0, 0.59);
+        background-color:transparent;
+        font-size:24px;
+        color:rgba(0, 0, 0, 0.74);
+}
+.filter-btn:hover{
+        background-color:rgba(255, 255, 255, 0.638);
+        cursor:pointer;
+}
+.filter-btn:active{
+        
+        transform: skew(20deg,10deg)  ;
+        transition:all 0.3s ease;
+}
+.title{
+        margin: 0 auto;
+        margin-bottom:10px;
+        display:block;
+        width:1000px;
+        height: 100px;
+        background-color: transparent;
+}
+.title h1{
+        font-family:'Ubuntu';
+        font-size:70px;
+        margin: 0 auto;
+        color: rgba(0, 0, 0, 0.782);
+        text-decoration: underline;
+}
+
+.items{
+        display:grid;
+        grid-template-columns: 50% 50%;
+        column-gap:50px;
+        row-gap:30px;
+        height:auto;
+        width:auto;
+        background-color: transparent;
+}
+.menu-item{
+        width:600px;
+        height:300px;
+        display:grid;
+        grid-template-columns: 50% 50%;
+        column-gap:20px;
+        align-items: start;
+
+}
+
+.item-info{
+        margin:0 auto;
+        align-items: center;
+        justify-content: center;
+        place-items: center;
+        padding:2px;
+        display:grid;
+        grid-template-rows: 100px 200px;
+        row-gap:10px;
+        height:300px;
+        width:300px;
+        background-color:transparent;
+}
+.item-info header{
+
+        align-items: center;
+        justify-content: center;
+        place-items: center;
+        display:grid;
+        height:100px;
+        width:300px;
+        margin:0 auto;
+        margin-bottom:0;
+        background-color:transparent;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.357);
+
+}
+.item-name{
+        
+        margin:3px auto;
+        background-color:transparent;
+        font-size:30px;
+        font-style: italic;
+        font-weight: bold;
+        color:rgba(0, 0, 0, 0.829);
+        font-family:'Franklin Gothic';
+}
+.item-price{
+        padding-bottom:10px;
+        background-color:transparent;
+        font-size:20px;
+        margin:0 auto;
+        color:rgba(0, 0, 0, 0.74);
+        font-family:'Franklin Gothic Medium';
+}
+
+.menu-item .item-description{
+        text-overflow: ellipsis;
+        display: block;
+        margin: 0 auto;
+        overflow:hidden;
+        font-size:15px;
+        margin-top:10px;
+        letter-spacing:0.7px;
+        font-family:Impact, sans-serif;
+
+}
+.menu-item .item-description:hover{
+        background-color:rgb(255, 255, 255); 
+        padding:10px;
+        width:350px;
+        font-size:18px;
+       
+        word-break: break-all;
+        z-index:1;
+        transform:translate(30px,-8px);
+        border-radius:5px;
+        border: 2px solid rgba(0, 0, 0, 0.624);
+}
+.photo{
+        margin-top:17px;
+        background-color:transparent;
+        width:300px;
+        height:300px;
+        display:block;
+        border-radius:50px;
+        box-shadow: 0px 0px 2px 2px rgba(104, 104, 104, 0.309);
+}
+.photo:hover{
+        transform:rotate(360deg);
+        transition:all 1.5s ease;
+        padding-right:3px;
+        border-radius: 50px;
+        
+}
