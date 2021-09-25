@@ -80,7 +80,10 @@ function displayMenuItems(menuItems)
                 //console.log(item);
                 //return `<h1>${item.title}</h1>`;//returns obj.value
                 return `<arcticle class="menu-item">
+                
+                
                 <img src=${item.img} class="photo" alt=${item.title}>
+               
                 <div class="item-info">
                           <header>
                                   <h4 class="item-name">${item.title}</h4>
@@ -137,4 +140,28 @@ function displayButtons()
                 })
         })
 }
-
+/*
+const Images=document.querySelectorAll('.popup-img');
+const photos=document.querySelectorAll('.popup-photo');
+function ShowPop(){
+        const showPopup= document.querySelectorAll('.img-btn');
+        showPopup.forEach(function(btn)
+        {
+                btn.addEventListener('click', function()
+                {
+                        console.log(btn.classList);
+                        Images.forEach(function(image)
+                        {
+                               image.classList.add('show');
+                               console.log(image.classList);
+                                
+                        })
+                        photos.forEach(function(image)
+                        {
+                                image.classList.add('show');
+                                console.log(image.classList);
+                                 
+                        })
+                })
+        })
+};*/

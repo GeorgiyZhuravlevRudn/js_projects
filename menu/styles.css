@@ -209,3 +209,23 @@ body{
         border-radius: 50px;
         
 }
+.img-btn{
+       
+        background-color:transparent;
+        border:none;
+}
+
+.popup-img{
+        opacity:0;
+        background-color:rgba(0, 0, 0, 0.501);
+}
+.popup-photo{
+        opacity:0;
+}
+.show{
+        opacity:1;
+        display:block;
+        height:100%;
+        width:100%;
+        z-index:10;
+}
