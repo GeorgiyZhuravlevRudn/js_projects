@@ -249,21 +249,21 @@ body{
                 width:50px;
                 height:50px;
                 margin:0;
-                border-radius:5px;
-                border:none;;
+                border:none;
+                align-items:center;
         }
-        .nav-toggle{
-                font-size:40px;
-                font-family: 'Ubuntu';
+        .nav-toggle img{
+                height:40px;
+                width:50px;
         }
         .nav-toggle:hover{
                 animation: bounce 0.7s infinite alternate;
-                background-color:rgba(255, 255, 255, 0.692);
                 transition:all 1s ease;
+                
         }
         .nav-toggle:active{
-                animation: rotation 0.3s 1 alternate;
-                background-color:rgba(255, 255, 255, 0.692);
+                animation: rotation 0.5s 1 alternate;
+                background-color:rgba(255, 255, 255, 0.549);
         }
         @keyframes bounce{
                 from{
@@ -282,7 +282,7 @@ body{
                 }
                 to{
                         
-                        transform:rotate(180deg);
+                        transform:rotate(20deg);
                 }
         }
         .links-container 
