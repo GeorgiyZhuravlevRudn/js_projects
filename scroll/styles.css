@@ -1,43 +1,72 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@200&display=swap');/*for nav*//*for h2*/
+html{
+        scroll-behavior: smooth;
+}
 body{
-        width:100%;
-        height:100%;
         display:grid;
-        position:static;
-        justify-content: space-between;
-        place-items: start;
-        grid-template-columns: 100%;
-        grid-template-rows: auto;
-        row-gap: 20%;
-        background-color:rgba(16, 208, 214, 0.35);
+        place-items: center;
+        row-gap:10%;
+        background-color:rgba(242, 226, 250, 0.96);
 }
 .main-header{
+        margin:0 auto;
+        min-height:900px;
+        width:100%;
         display:grid;
         grid-template-columns: 100%;
-        grid-template-rows:30% 70%;
-        height:auto;
-        margin:0;
-        padding:0;
-        left:0;
-        top:0;
-        position:static;
+        grid-template-rows:70px auto;
         place-items: center;
         align-items:center;
+        justify-content: space-around;
+        background: rgb(190, 60, 255);
+        background: linear-gradient(340deg, rgba(242,226,250,0.8325262176856566) 50%, rgb(228, 197, 253) 97%);
+}
+.banner{
+        margin:0;
+        position:static;
+        display:grid;
+        justify-content: space-between;
+        place-items: center;
+        align-items: center;
+        padding:0;
+        width:600px;
+        min-height: 200px;
+        height:auto;
+        text-align:center;
         background-color:transparent;
-        background-image:url(img/background.jpg);
+}
+.banner #name{
+        margin:0 auto;
+        background-color:transparent;
+        font-family: 'Franklin Gothic Medium';
+        font-size:90px;
+        color:rgba(0, 0, 0, 0.658)
+
+}
+.banner p{
+        font-family: 'Source Sans',sans-serif;
+        padding-left:0px;
+        padding-right:0px;
+        text-transform: lowercase;
+        text-align: center;
+        font-size: 17px;
+        color:rgba(134, 134, 134, 0.638);
 }
 
 .navbar{
+        
         width:100%;
-        max-width:1400px;
         min-width:960px;
-        height:100%;
-        margin:0 auto;
+        height:70px;
+        margin:0;
         display:grid;
-        background-color:transparent;
         grid-template-rows:100%;
-        grid-template-columns:5% 95%;
+        grid-template-columns:20% 80%;
         justify-content:space-around;
-        z-index:1; 
+        align-items: center;
+        z-index:2; 
+        background-color:transparent;
 }
 .nav-header{
         display:grid;
@@ -60,32 +89,33 @@ body{
         display:none;
 }
 .links-container{
-
+        
         max-width:100%;
+        height:100%;
+        min-width:700px;
         display:grid;
-        margin-left:5px;
-        place-items: center;
-        align-items: center;
-        justify-content: center;
-        grid-template-rows:100%;
+        justify-content:space-around;
+        place-items:end;
+        width:auto;
         grid-template-columns:100%;
+        grid-template-rows: 100%;
         background-color:transparent;
 }
 .links{
-        padding:0;
-        margin:0 auto;
-        width:50%;
-        max-width:800px;
+        background-color:transparent;
         height:100%;
+        padding:0;
+        margin:0;
+        margin-right:10%;
+        width:100%;
+        max-width:700px;
         align-items: center;
         justify-content: space-around;
         place-items:center;
         list-style: none;
         display:grid;
-        padding-left:10px;
-        padding-right:10px;
         grid-template-columns:auto auto auto auto;
-        background-color:transparent;
+        grid-template-rows:100%;
 }
 .nav-item{
         padding:auto;
@@ -95,26 +125,80 @@ body{
         margin:auto;
         background-color:transparent;
 }
-.scroll-link{
-        font-family: Georgia;
+.section{
+        margin:0;
+        display:grid;
+        min-height:900px;
         width:100%;
-        height:100%;
-        margin: 0 auto;
+        max-width:800px;
+        align-items: center;
+        place-items:center;
+        justify-content:center;
+        grid-template-columns: 100%;
+        grid-template-rows: 10% 90%;
+        row-gap:0%;
+        background-color:transparent;
+}
+.section h2{
+        margin:0;
+        font-family: 'Abril Fatface', cursive;
+        text-transform: uppercase;
+        letter-spacing:10px;
+        font-weight: 100;
+        font-size:80px;
+        padding:10px;
+        background-color:transparent;
+        animation: colorChange 1s infinite alternate;
+}
+@keyframes colorChange{
+        from{
+              
+                color:rgba(228, 197, 253, 0.816);
+                transform:translateY(0px);
+                border-bottom:none;
+                text-shadow:unset;
+        }
+        to{
+                color:rgb(228, 197, 253);
+                text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.48);
+                transform:translateY(20px);
+                border-bottom:1px solid rgba(0, 0, 0, 0.603);
+        }
+}
+
+.section p{
+        margin:0;
+        display:block;
+        text-align: center;
+        max-width:600px;
+        font-size: 30px;
+        margin-bottom:40%;
+        color:rgba(0, 0, 0, 0.597);
+}
+.section p:hover{
+        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.151);
+        transform:scale(1.2,1.2);
+        transition:all 0.7s ease;
+        padding:20px;
+        background: linear-gradient(190deg, rgba(242,226,250,0.8325262176856566) 60%, rgb(228, 197, 253) 97%); ;
+}
+.scroll-link{
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding:0;
         font-size:30px;
         text-decoration: none;
         color:rgba(0, 0, 0, 0.699);
         text-transform: capitalize;
+        letter-spacing:0.2px;
 }
 .scroll-link:hover, .nav-item:hover{
         border:none;
-        background-color: rgba(255, 255, 255, 0.391);
-        border-radius:5px;
+        color: rgba(255, 255, 255, 0.665);
         padding:0;
         animation:bounce 2s infinite alternate;
 }
-.scroll-link:active{
-        animation:bounce 0.2s 1 alternate;
-}
+
 
 .void{
         display:none;
@@ -126,11 +210,9 @@ body{
 {
         .main-header{
                 display:grid;
-                min-height:500px;
-                max-height: 100%;
-                max-height:800px;
+                height:900px;
                 grid-template-columns:100%;
-                grid-template-rows:13% 87%;
+                grid-template-rows:70px auto;
                 margin:0;
                 padding:0;
                 left:0;
@@ -140,23 +222,25 @@ body{
         .navbar{
                 width:100%;
                 min-width:600px;
-                max-height:100px;
                 margin:0;
                 display:grid;
-                background-color:rgba(161, 77, 194, 0.734);
+                background-color:transparent;
                 grid-template-rows:100%;
                 grid-template-columns:100%; 
                 place-items: center;
                 justify-content: center;
-                z-index:1;                
+                z-index:2;        
+                border-bottom:1px solid rgba(70, 70, 70, 0.124);        
         }
         .nav-header{
+                margin:0;
                 width:100%;
-                max-height:50px;
+                height:100%;
                 display: grid;
-                grid-template-columns:8% 8%;
+                grid-template-columns:20% 20%;
                 justify-content: space-between;
                 background-color:transparent;
+              
 
         }
         .nav-toggle, .logo{
@@ -165,13 +249,12 @@ body{
                 width:50px;
                 height:50px;
                 margin:0;
-
                 border-radius:5px;
                 border:none;;
         }
         .nav-toggle{
                 font-size:40px;
-                font-family: 'Franklin Gothic Medium';
+                font-family: 'Ubuntu';
         }
         .nav-toggle:hover{
                 animation: bounce 0.7s infinite alternate;
@@ -210,18 +293,19 @@ body{
         }
         .show-container{
                 align-items:center;
-                width:97%;
+                width:100%;
                 min-width:400px;
                 max-width:960px;
-                height:200px;
-                max-height:200px;
-                background-color:rgba(161, 77, 194, 0.549);
+                min-height:200px;
+                max-height:auto;
+                background-color:rgba(242, 226, 250, 0.514);
+                border-bottom:1px solid rgba(70, 70, 70, 0.124);
         }
         
         .links{
                 width:100%;
-                max-height:400px;
-                margin:0 auto;
+                margin:0;
+                margin-left:3%;
                 display:grid;
                 place-items: center;
                 align-items: center;
@@ -231,23 +315,32 @@ body{
                 padding:0;
                 background-color:transparent;
         }
-        .scroll-link, .scroll-link:hover{
+        .scroll-link{
                 font-size:30px;
-                padding-left:10px;
-                padding-right:10%;
                 height:100%;
                 border-radius:0px;
+        }
+        .scroll-link:hover{
+                color:black;
         }
         .nav-item:hover{
                 background-color: transparent;
                 animation:none;    
                 transform:scale(1.02,1.02);  
-                transition:all 0.5s ease;  
+                transition:all 0.5s ease-in;  
         }
         .nav-item{
                 width:90%;
 
         }
+
+}
+.section{
+        max-width:100%;
+        min-width:850px;
+        max-height:400px;
+        position:relative;
+        display:grid;
 }
 
 @keyframes bounce{
@@ -259,10 +352,32 @@ body{
                
                 transform:scale(1.2,1.2);
         }
+        
 }
-.section{
-        max-width:1200px;
-        max-height:400px;
-        position:relative;
-        display:grid;
+
+
+/*fixed-nav*/
+.fixed-navbar{
+        position:fixed;
+        width:100%;
+        margin:0;
+        padding:0;
+        align-items:center;
+        top:0;
+        left:0;
+        background-color:rgba(230, 173, 255, 0.713);
+        border-bottom:2px solid rgba(107, 107, 107, 0.439);
+}
+.scroll-top{
+        border:3px solid rgb(253, 253, 253);
+        width:50px;
+        height:50px;
+        font-size:20px;
+        color:black;
+        text-decoration:none;
+        visibility:hidden;
+}
+.show-top-link{
+        visibility:visible;
+        z-index:10;
 }
