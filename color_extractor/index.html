@@ -15,18 +15,38 @@
         </head>
         <body> 
                 <header class="main-header">
-                        <h1>color extractor</h1>
+                        <h1>Выбор цвета по фотографии</h1>
                 </header>
                 <main> 
-                        <input type="file" id="image_input" accept="image/jpg,image/png">
-                        <p>
-                                <span class="box" id="pixelColor" data-label="Current Pixel"></span>
-                                <canvas data-src="img/background.jpg" id="m-canvas"></canvas>
+                        <p id="info">
+                        Загрузите фотографию понравившегося интерьера с вашего компьютера или телефона, 
+                        и мы поможем определить цвет.
                         </p>
+                        <div class="inputs">
+                                <label class="custom-input">
+                                        <input type="file" id="image_input" accept="image/jpg,image/png">       
+                                        выбрать файл
+                                        <img src="img/upload.png" width="16px" height="16px">
+                                </label>
+                                <div class="invisible_input">
+                                        <span class="drop_zone"> или перетяните изображение сюда</span>
+                                        <input class="dropZoneInput" type="file"accept="image/jpg,image/png"> 
+                                </div>
+                        </div>
+                        
+                        <section class="pic_clr">
+                                <div id="container">
+                                        <span class="currColor" id="pixelColor" data-label="Current Pixel"></span>
+                                        <canvas data-src="img/background.jpg" id="m-canvas"></canvas>       
+                                </div>
+                                <div class="clrs">
+                                        <p>Кликните на фото,чтобы добавить цвет</p>
+                                        <section class="colors">
+                                                <!--saved colors-->
+                                               
+                                        </section>
 
-                        <section class="colors">
-                                <!--saved colors-->
-                               
+                                </div>
                         </section>
                 </main>
         </body>

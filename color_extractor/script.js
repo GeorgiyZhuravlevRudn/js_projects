@@ -8,12 +8,12 @@ const Extractor ={
                 Extractor.canvas=document.querySelector('main canvas');//choosing a canvas
                 Extractor.ctx=Extractor.canvas.getContext('2d');// making a context for a canvas
                 Extractor.img=document.createElement('img');//creating <img> element
-                //Extractor.img.src=Extractor.canvas.getAttribute('data-src');//allocating it in memory
+                Extractor.img.src=Extractor.canvas.getAttribute('data-src');//allocating it in memory
                 //img is loaded -> adding it to canvas
-                Extractor.canvas.width=900;
-                Extractor.canvas.style.width=900;
-                Extractor.canvas.height=500;
-                Extractor.canvas.style.height=500;
+                Extractor.canvas.width=630;
+                Extractor.canvas.style.width=630;
+                Extractor.canvas.height=568;
+                Extractor.canvas.style.height=568;
 
                 Extractor.img.onload = (event)=>{
                         Extractor.ctx.drawImage(Extractor.img,0,0);//void (img-src,dx,dy)
@@ -46,9 +46,11 @@ const Extractor ={
         {
                 let cols=Extractor.canvas.width;
                 let rows= Extractor.canvas.height;
-                //1. remove curr content  to draw img and rect 
+
+                //1. remove curr content  to draw img
                 Extractor.ctx.clearRect(0,0,cols,rows);
                 Extractor.ctx.drawImage(Extractor.img,0,0);
+
                 let {offsetX,offsetY}=event;//our curr position
                 const inset = 20; //inset 20px  as workable range('ll getAvgClr in it)
                 // find a logic in it (bounding box, stops the rectangle)
@@ -77,9 +79,9 @@ const Extractor ={
 
                 //avgColor is string
                 let avgClr=`rgb(${red},${green},${blue})`;
+                m_glass.style.background=avgClr;
                 //document.getElementById('pixelColor').style.background=avgClr;
                 //draw on that rect
-                m_glass.style.background=avgClr;
                 /*Extractor.avg=avgClr;
                 Extractor.ctx.fillStyle=avgClr;//fill our rect 
                 Extractor.ctx.strokeStyle='#FFFFFF';//color of a rect stroke
@@ -129,8 +131,13 @@ const Extractor ={
                 //creating a pixel class, so we can change attributes, etc.
                 pxl.className='box';
                 let dltBtn=document.createElement('button');
+                let clrInfo=document.createElement('div');//color box 
+
                 dltBtn.textContent="x";
                 dltBtn.className='delete-btn';
+
+                clrInfo.textContent=`HEX #`+Extractor.rgba2hex(Extractor.pixel);
+                clrInfo.className='colorInfo';
                 dltBtn.addEventListener('click',deleteItem,false);
                 function deleteItem()
                 {
@@ -141,17 +148,18 @@ const Extractor ={
                 pxl.setAttribute('data-color',`#`+Extractor.rgba2hex(Extractor.pixel));// htmlString
                 pxl.style.backgroundColor=Extractor.pixel;//htmlColor
                 pxl.appendChild(dltBtn);
+                pxl.appendChild(clrInfo);
                 colors.appendChild(pxl);
         },
 };
-magnify(50);
+magnify();
 const image_input= document.querySelector('#image_input');
 image_input.addEventListener('change',function()
 {
         const reader= new FileReader();
         reader.onload = function(e){
                 Extractor.img.src=`${e.target.result}`;
-                img_src=`${e.target.result}`
+                img_src=`${e.target.result}`;
         }
         reader.readAsDataURL(this.files[0]);
 })
@@ -160,9 +168,10 @@ console.log(m_glass);
 //magnify(document.querySelector('canvas'),1);
 var img_src="";
 
-function magnify(zoom)
+function magnify()
 {
-        var img,glass,w,h,bw;
+        var img,glass,w,h;
+        
         img=document.getElementById('m-canvas');
         console.log(img);
         
@@ -170,54 +179,98 @@ function magnify(zoom)
         glass.setAttribute("class","m-glass");
 
         img.parentElement.insertBefore(glass,img);//insert glass before img
-        console.log(img_src);
-
-        //make a background
-        if(img_src!=null){
+       //make a background
+        /*if(img_src!=null){
                 glass.style.backgroundImage="url('"+Extractor.img.src+"')";
                 glass.style.backgroundRepeat="no-repeat";
                 glass.style.backgroundSize=(img.width*zoom)+"px "+(img.height*zoom)+"px ";
-        }
-        bw=3;
+        }*/
         w = glass.offsetWidth / 2;
+        console.log(w);
         h = glass.offsetHeight / 2;
 
   /* Выполните функцию, когда кто-то перемещает лупу по изображению: */
         glass.addEventListener("mousemove", moveMagnifier);
         img.addEventListener("mousemove", moveMagnifier);
+
         function moveMagnifier(e) {
+                let cols=img.width;
+                let rows= img.height;
+                // find a logic in it (bounding box, stops the rectangle)
                 var pos, x, y;
                 /* Предотвратите любые другие действия, которые могут возникнуть при перемещении по изображению */
                 e.preventDefault();
-                /* Получить позиции курсора x и y: */
                 pos = getCursorPos(e);
                 x = pos.x;
                 y = pos.y;
                 /* Не допускайте, чтобы лупа находилась вне изображения: */
-                if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
-                if (x < w / zoom) {x = w / zoom;}
-                if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
-                if (y < h / zoom) {y = h / zoom;}
+                if (x > cols-w ) {x = cols-w ;}
+                if (x < w) {x = w;}
+                if (y > rows-h) {y = rows-h ;}
+                if (y < h) {y = h;}
                 /* Установите положение стекла лупы: */
-                glass.style.left = (x - w) + "px";
-                glass.style.top = (y - h) + "px";
-                /* Покажите, что такое увеличительное стекло "смотреть": */
-                glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+                glass.style.left = (x-w) + "px";
+                glass.style.top = (y-h ) + "px";
         }
             
         function getCursorPos(e) {
                 var a, x = 0, y = 0;
                 e = e || window.event;
-                /* Получить x и y позиции изображения: */
                 a = img.getBoundingClientRect();
-                /* Вычислите координаты курсора x и y относительно изображения: */
                 x = e.pageX - a.left;
                 y = e.pageY - a.top;
-                /* Consider any page scrolling: */
                 x = x - window.pageXOffset;
                 y = y - window.pageYOffset;
                 return {x : x, y : y};
         }
 
 }
+console.log(document.querySelectorAll('.dropZoneInput'));
+
+document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+        const dropZoneElement = inputElement.closest(".invisible_input");
+      
+        dropZoneElement.addEventListener("click", () => {
+          inputElement.click();
+        });
+      
+        inputElement.addEventListener("change", () => {
+                const reader= new FileReader();
+                reader.onload = function(e){
+                        Extractor.img.src=`${e.target.result}`;
+                        img_src=`${e.target.result}`;
+                }
+                reader.readAsDataURL(this.files[0]);
+        
+        });
+      
+        dropZoneElement.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          dropZoneElement.classList.add("drop_zone_over");
+        });
+      
+        ["dragleave", "dragend"].forEach((type) => {
+          dropZoneElement.addEventListener(type, (e) => {
+            dropZoneElement.classList.remove("drop_zone_over");
+          });
+        });
+      
+        dropZoneElement.addEventListener("drop", (e) => {
+          e.preventDefault();
+      
+          const reader= new FileReader();
+          reader.onload = function(e){
+                  Extractor.img.src=`${e.target.result}`;
+                  img_src=`${e.target.result}`;
+          }
+          reader.readAsDataURL(this.files[0]);
+  
+          dropZoneElement.classList.remove("drop_zone_over");
+        });
+      });
+      
+      
+       
+      
+
 document.addEventListener('DOMContentLoaded', Extractor.init);
