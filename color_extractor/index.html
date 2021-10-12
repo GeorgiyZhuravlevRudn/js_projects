@@ -14,12 +14,14 @@
         <link rel="stylesheet" href="styles.css" />
         </head>
         <body> 
+        <section class="main-container">
                 <header class="main-header">
                         <h1>Выбор цвета по фотографии</h1>
                 </header>
                 <main> 
                         <p id="info">
-                        Загрузите фотографию понравившегося интерьера с вашего компьютера или телефона, 
+                        Загрузите фотографию понравившегося интерьера с вашего компьютера или телефона,
+                        <br> 
                         и мы поможем определить цвет.
                         </p>
                         <div class="inputs">
@@ -36,11 +38,14 @@
                         
                         <section class="pic_clr">
                                 <div id="container">
-                                        <span class="currColor" id="pixelColor" data-label="Current Pixel"></span>
+                                        <!--<span class="currColor" id="pixelColor" data-label="Current Pixel"></span>-->
                                         <canvas data-src="img/background.jpg" id="m-canvas"></canvas>       
                                 </div>
                                 <div class="clrs">
-                                        <p>Кликните на фото,чтобы добавить цвет</p>
+                                        <p>
+                                                <img class="attention-sign" src="img/attention.png">
+                                                Кликните на фото, чтобы добавить цвет
+                                        </p>
                                         <section class="colors">
                                                 <!--saved colors-->
                                                
@@ -49,6 +54,7 @@
                                 </div>
                         </section>
                 </main>
+        </section>
         </body>
         <script src="script.js" defer></script>
 </html>

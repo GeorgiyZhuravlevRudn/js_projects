@@ -14,8 +14,8 @@ const Extractor ={
                 Extractor.canvas.style.width=630;
                 Extractor.canvas.height=568;
                 Extractor.canvas.style.height=568;
-
                 Extractor.img.onload = (event)=>{
+                        //Extractor.ctx.clearRect(0,0,cols,rows);
                         Extractor.ctx.drawImage(Extractor.img,0,0);//void (img-src,dx,dy)
                         //getImageData - an array of (r,g,b,a) elements
                         let imgDataObj= Extractor.ctx.getImageData( //(sx(pixel x coord),sy(pixel y coord),sw,sh)
@@ -25,7 +25,6 @@ const Extractor ={
                                 Extractor.canvas.height
                         );
                         Extractor.data=imgDataObj.data;//m*n*4(rgba)
-
                         Extractor.canvas.addEventListener('mousemove', Extractor.getPixel);// every time i move mouse it'll get a pixel
                         Extractor.canvas.addEventListener('click', Extractor.addBox);
                 };
@@ -38,15 +37,18 @@ const Extractor ={
                 let{offsetX,offsetY}=event; // coordinates of an event
                 let colorArr=Extractor.getPixelColor(cols,offsetY,offsetX);//
                 let htmlColor=`rgb(${colorArr.red}, ${colorArr.green}, ${colorArr.blue})`;//
-                document.getElementById('pixelColor').style.background=htmlColor;//curr span bg == curr color 
+                //document.getElementById('pixelColor').style.background=htmlColor;//curr span bg == curr color 
                 Extractor.pixel=htmlColor;
+                m_glass.style.background=htmlColor;
                 Extractor.getAverage(event);
         },
+
         getAverage(event)
         {
                 let cols=Extractor.canvas.width;
                 let rows= Extractor.canvas.height;
-
+                // console.log(cols);
+                // console.log(rows);
                 //1. remove curr content  to draw img
                 Extractor.ctx.clearRect(0,0,cols,rows);
                 Extractor.ctx.drawImage(Extractor.img,0,0);
@@ -72,14 +74,15 @@ const Extractor ={
                                 blues+= c.blue;
                         }
                 }
-                let boxSize=41*41;
+                let boxSize=30*30;
                 let red= Math.round(reds/boxSize);// natural median of all reds 
                 let green= Math.round(greens/boxSize);
                 let blue= Math.round(blues/boxSize);
 
                 //avgColor is string
                 let avgClr=`rgb(${red},${green},${blue})`;
-                m_glass.style.background=avgClr;
+                //m_glass.style.background=avgClr;
+
                 //document.getElementById('pixelColor').style.background=avgClr;
                 //draw on that rect
                 /*Extractor.avg=avgClr;
@@ -156,6 +159,7 @@ magnify();
 const image_input= document.querySelector('#image_input');
 image_input.addEventListener('change',function()
 {
+       
         const reader= new FileReader();
         reader.onload = function(e){
                 Extractor.img.src=`${e.target.result}`;
@@ -174,22 +178,12 @@ function magnify()
         
         img=document.getElementById('m-canvas');
         console.log(img);
-        
         glass=document.createElement('div');
         glass.setAttribute("class","m-glass");
-
         img.parentElement.insertBefore(glass,img);//insert glass before img
-       //make a background
-        /*if(img_src!=null){
-                glass.style.backgroundImage="url('"+Extractor.img.src+"')";
-                glass.style.backgroundRepeat="no-repeat";
-                glass.style.backgroundSize=(img.width*zoom)+"px "+(img.height*zoom)+"px ";
-        }*/
         w = glass.offsetWidth / 2;
         console.log(w);
         h = glass.offsetHeight / 2;
-
-  /* Выполните функцию, когда кто-то перемещает лупу по изображению: */
         glass.addEventListener("mousemove", moveMagnifier);
         img.addEventListener("mousemove", moveMagnifier);
 
@@ -209,8 +203,8 @@ function magnify()
                 if (y > rows-h) {y = rows-h ;}
                 if (y < h) {y = h;}
                 /* Установите положение стекла лупы: */
-                glass.style.left = (x-w) + "px";
-                glass.style.top = (y-h ) + "px";
+                glass.style.left = (w) + "px";
+                glass.style.top = (h) + "px";
         }
             
         function getCursorPos(e) {
@@ -227,47 +221,55 @@ function magnify()
 }
 console.log(document.querySelectorAll('.dropZoneInput'));
 
-document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
+document.querySelectorAll(".dropZoneInput").forEach((inputElement) => {
+
         const dropZoneElement = inputElement.closest(".invisible_input");
       
         dropZoneElement.addEventListener("click", () => {
           inputElement.click();
         });
       
-        inputElement.addEventListener("change", () => {
-                const reader= new FileReader();
-                reader.onload = function(e){
-                        Extractor.img.src=`${e.target.result}`;
-                        img_src=`${e.target.result}`;
+        inputElement.addEventListener("change", (e) => {
+                e.preventDefault();
+                console.log(e.dataTransfer.files);
+                if(e.dataTransfer.files.length){
+                        inputElement.files=e.dataTransfer.files;
+                        const reader= new FileReader();
+                        reader.onload = function(e){
+                                Extractor.img.src=`${e.target.result}`;
+                                img_src=`${e.target.result}`;
+                        }
+                        reader.readAsDataURL(e.dataTransfer.files[0]);
                 }
-                reader.readAsDataURL(this.files[0]);
-        
         });
       
         dropZoneElement.addEventListener("dragover", (e) => {
           e.preventDefault();
           dropZoneElement.classList.add("drop_zone_over");
         });
-      
+      //when leave drop zone or cancel drag
         ["dragleave", "dragend"].forEach((type) => {
           dropZoneElement.addEventListener(type, (e) => {
             dropZoneElement.classList.remove("drop_zone_over");
           });
-        });
-      
-        dropZoneElement.addEventListener("drop", (e) => {
-          e.preventDefault();
-      
-          const reader= new FileReader();
-          reader.onload = function(e){
-                  Extractor.img.src=`${e.target.result}`;
-                  img_src=`${e.target.result}`;
-          }
-          reader.readAsDataURL(this.files[0]);
-  
+        });      
+
+        dropZoneElement.addEventListener("drop", function(e) {
+                e.preventDefault();
+                console.log(e.dataTransfer.files);
+                if(e.dataTransfer.files.length){
+                        inputElement.files=e.dataTransfer.files;
+                        const reader= new FileReader();
+                        reader.onload = function(e){
+                                Extractor.img.src=`${e.target.result}`;
+                                img_src=`${e.target.result}`;
+                        }
+                        reader.readAsDataURL(e.dataTransfer.files[0]);
+                }
+         
           dropZoneElement.classList.remove("drop_zone_over");
         });
-      });
+});
       
       
        
