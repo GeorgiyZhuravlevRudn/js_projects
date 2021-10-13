@@ -41,22 +41,20 @@ const Extractor ={
                 //document.getElementById('pixelColor').style.background=htmlColor;//curr span bg == curr color 
                 Extractor.pixel=htmlColor;
                 m_glass.style.background=htmlColor;
-                //Extractor.getAverage(event);// call this if need Average color 
+                //Extractor.getAverage(event);// call this if need an Average color 
         },
 
         getAverage(event)
         {
                 let cols=Extractor.canvas.width;
                 let rows= Extractor.canvas.height;
-                // console.log(cols);
-                // console.log(rows);
-                //1. remove curr content  to draw img
+              
                 Extractor.ctx.clearRect(0,0,cols,rows);
                 Extractor.ctx.drawImage(Extractor.img,0,0);
 
                 let {offsetX,offsetY}=event;//our curr position
                 const inset = 20; //inset 20px  as workable range('ll getAvgClr in it)
-                // find a logic in it (bounding box, stops the rectangle)
+                
                 offsetX=Math.min(offsetX,cols-inset);
                 offsetX=Math.max(offsetX, inset);
                 offsetY=Math.min(offsetY,rows-inset);
@@ -65,7 +63,8 @@ const Extractor ={
                 // create an average color rect 
                 let reds=0;
                 let greens=0; 
-                let blues=0;// total for all val in rect
+                let blues=0;
+
                 // for anything in range of(-20 to 20)
                 for(let x = -1 *inset;x<=inset;x++){// x=-20 to x=20
                         for(let y = -1*inset;y<=inset;y++){
@@ -75,24 +74,13 @@ const Extractor ={
                                 blues+= c.blue;
                         }
                 }
-                let boxSize=30*30;
+                let boxSize=60*60;//our glass size
                 let red= Math.round(reds/boxSize);// natural median of all reds 
                 let green= Math.round(greens/boxSize);
                 let blue= Math.round(blues/boxSize);
 
-                //avgColor is string
                 let avgClr=`rgb(${red},${green},${blue})`;
-                //m_glass.style.background=avgClr;
-
-                //document.getElementById('pixelColor').style.background=avgClr;
-                //draw on that rect
-                /*Extractor.avg=avgClr;
-                Extractor.ctx.fillStyle=avgClr;//fill our rect 
-                Extractor.ctx.strokeStyle='#FFFFFF';//color of a rect stroke
-                Extractor.ctx.strokeWidth=2;
-                Extractor.ctx.strokeRect(offsetX-inset,offsetY-inset,41,41);//(x,y,width,height)(draw on a canvas)
-                Extractor.ctx.fillRect(offsetX-inset,offsetY-inset,41,41);//(draw on a canvas)
-                */
+                m_glass.style.background=avgClr; 
         },
 
         //get curr pixel color
