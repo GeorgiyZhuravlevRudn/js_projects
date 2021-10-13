@@ -25,22 +25,23 @@ const Extractor ={
                                 Extractor.canvas.height
                         );
                         Extractor.data=imgDataObj.data;//m*n*4(rgba)
-                        Extractor.canvas.addEventListener('mousemove', Extractor.getPixel);// every time i move mouse it'll get a pixel
+                        Extractor.canvas.addEventListener('mousemove', Extractor.getPixel);
                         Extractor.canvas.addEventListener('click', Extractor.addBox);
                 };
         },
 
+        //getting a pixel using getPixel color and HTML string
         getPixel(event)
         {
                 let cols=Extractor.canvas.width;
                 //let rows=Extractor.canvas.height;
                 let{offsetX,offsetY}=event; // coordinates of an event
-                let colorArr=Extractor.getPixelColor(cols,offsetY,offsetX);//
-                let htmlColor=`rgb(${colorArr.red}, ${colorArr.green}, ${colorArr.blue})`;//
+                let colorArr=Extractor.getPixelColor(cols,offsetY,offsetX);
+                let htmlColor=`rgb(${colorArr.red}, ${colorArr.green}, ${colorArr.blue})`;
                 //document.getElementById('pixelColor').style.background=htmlColor;//curr span bg == curr color 
                 Extractor.pixel=htmlColor;
                 m_glass.style.background=htmlColor;
-                Extractor.getAverage(event);
+                //Extractor.getAverage(event);// call this if need Average color 
         },
 
         getAverage(event)
@@ -94,6 +95,7 @@ const Extractor ={
                 */
         },
 
+        //get curr pixel color
         getPixelColor(cols,x,y)
         {
                 let pixel = cols*x+y;// pixel position in canvas
@@ -105,9 +107,11 @@ const Extractor ={
                         alpha: Extractor.data[arrayPos+3],
                 }; 
         },
+
+        //rgb to hex text converter
         rgba2hex(orig)
         {
-        var a, isPercent,
+        var a,
                 rgb = orig.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
                 alpha = (rgb && rgb[4] || "").trim(),
                 hex = rgb ?
@@ -133,78 +137,87 @@ const Extractor ={
                 let pxl= document.createElement('span');
                 //creating a pixel class, so we can change attributes, etc.
                 pxl.className='box';
+                //adding to our sectionClr elm
+
+                //creating 'delete button' and 'color info' string
                 let dltBtn=document.createElement('button');
+                let trashImg=document.createElement('img');
                 let clrInfo=document.createElement('div');//color box 
 
-                dltBtn.textContent="x";
+                dltBtn.textContent="";
                 dltBtn.className='delete-btn';
-
+                trashImg.src='img/trash.png';
+                trashImg.className='trashImg';
                 clrInfo.textContent=`HEX #`+Extractor.rgba2hex(Extractor.pixel);
                 clrInfo.className='colorInfo';
+
+                //dlt button functionality
                 dltBtn.addEventListener('click',deleteItem,false);
                 function deleteItem()
                 {
+                        sectionClrs.pop();
                         this.parentNode.parentNode.removeChild(this.parentNode);
                 }
+
                 //pixelBox.innerHTML=`<button type="button" class="delete-btn">x</button>`;
                 pxl.setAttribute('data-label','Exact pixel');// (attr name, val)
                 pxl.setAttribute('data-color',`#`+Extractor.rgba2hex(Extractor.pixel));// htmlString
                 pxl.style.backgroundColor=Extractor.pixel;//htmlColor
+                
+                dltBtn.appendChild(trashImg);
                 pxl.appendChild(dltBtn);
                 pxl.appendChild(clrInfo);
-                colors.appendChild(pxl);
+        
+                // if delete an elm -> delete from sectionClrs arr
+                if(sectionClrs.length < 9){
+                        sectionClrs.push(pxl);
+                        colors.appendChild(pxl);
+                        console.log(sectionClrs);
+                }
+                else//pop a message that user can't add >9 elms
+                {
+                        alert('Вы не можете добавить больше 9 цветов');
+                        alert('Удалите один из цветов,чтобы добавить новый');
+                        pxl.remove();
+                }
         },
 };
-magnify();
-const image_input= document.querySelector('#image_input');
-image_input.addEventListener('change',function()
-{
-       
-        const reader= new FileReader();
-        reader.onload = function(e){
-                Extractor.img.src=`${e.target.result}`;
-                img_src=`${e.target.result}`;
-        }
-        reader.readAsDataURL(this.files[0]);
-})
-const m_glass=document.querySelector('.m-glass');
-console.log(m_glass);
-//magnify(document.querySelector('canvas'),1);
-var img_src="";
 
-function magnify()
+
+moveGlass(); // changes glass position 
+let sectionClrs=[]; //an array of our current colors (maxLength=9)
+var img_src="";
+const m_glass=document.querySelector('.m-glass');
+const image_input= document.querySelector('#image_input');
+
+//start of a magnify function
+function moveGlass()
 {
         var img,glass,w,h;
-        
         img=document.getElementById('m-canvas');
-        console.log(img);
         glass=document.createElement('div');
         glass.setAttribute("class","m-glass");
         img.parentElement.insertBefore(glass,img);//insert glass before img
         w = glass.offsetWidth / 2;
-        console.log(w);
         h = glass.offsetHeight / 2;
         glass.addEventListener("mousemove", moveMagnifier);
         img.addEventListener("mousemove", moveMagnifier);
 
         function moveMagnifier(e) {
-                let cols=img.width;
-                let rows= img.height;
-                // find a logic in it (bounding box, stops the rectangle)
                 var pos, x, y;
-                /* Предотвратите любые другие действия, которые могут возникнуть при перемещении по изображению */
                 e.preventDefault();
                 pos = getCursorPos(e);
                 x = pos.x;
                 y = pos.y;
-                /* Не допускайте, чтобы лупа находилась вне изображения: */
-                if (x > cols-w ) {x = cols-w ;}
-                if (x < w) {x = w;}
-                if (y > rows-h) {y = rows-h ;}
-                if (y < h) {y = h;}
-                /* Установите положение стекла лупы: */
-                glass.style.left = (w) + "px";
-                glass.style.top = (h) + "px";
+
+                //moving only in canvas+30 area
+                if (x > img.width+30 ) {x = img.width+30; }
+                if (x < -30 ) {x = 30;}
+                if (y > img.height) {y = img.height ;}
+                if (y < -30 ) {y = -30 ;}
+                
+                glass.style.left = (x) + "px";
+                glass.style.top = (y-30-h) + "px";
         }
             
         function getCursorPos(e) {
@@ -219,8 +232,25 @@ function magnify()
         }
 
 }
-console.log(document.querySelectorAll('.dropZoneInput'));
+//end of a magnify function
 
+
+/**-- input section--**/
+
+//start of an button input
+image_input.addEventListener('change',function()
+{
+       
+        const reader= new FileReader();
+        reader.onload = function(e){
+                Extractor.img.src=`${e.target.result}`;
+                img_src=`${e.target.result}`;
+        }
+        reader.readAsDataURL(this.files[0]);
+})
+//end of an button input
+
+//start of a drop zone input
 document.querySelectorAll(".dropZoneInput").forEach((inputElement) => {
 
         const dropZoneElement = inputElement.closest(".invisible_input");
@@ -270,9 +300,7 @@ document.querySelectorAll(".dropZoneInput").forEach((inputElement) => {
           dropZoneElement.classList.remove("drop_zone_over");
         });
 });
-      
-      
-       
-      
+//end of a drop zone input
 
+//--- input section end--//
 document.addEventListener('DOMContentLoaded', Extractor.init);

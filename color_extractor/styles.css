@@ -136,13 +136,9 @@ input[type="file"]
         background-color:transparent;
 }
 .pic_clr #container{
+        position: relative;
         width:630px;
         height:568px;
-        display:grid;
-        grid-template-rows: 568px;
-        grid-template-columns:630px;
-        justify-content: center;
-        place-items: start;
         background-color:transparent;
 }
 
@@ -150,7 +146,7 @@ input[type="file"]
         position: relative;
         margin:0;
         border: none;
-        cursor:url("ed.png"), default;
+       cursor:url("img/ed.png"),auto;
 }
 #pixelColor{
         border: 1px solid rgb(143, 143, 143);
@@ -184,7 +180,7 @@ input[type="file"]
         width:630px;
         display:grid;
         padding:0px;
-        background-color:black;
+        background-color:transparent;
         grid-template-rows: 33% 33% 33%;
         grid-template-columns: 33% 33% 33% ;
         row-gap: 0px;
@@ -192,18 +188,17 @@ input[type="file"]
         place-items: center;
         justify-content:space-between;
 }
+
 .m-glass {
 
-        position: fixed;
-        justify-content:center;
-        border: 1px solid rgb(138, 138, 138);
+        position: absolute;
+        border: 1px solid white;
         border-radius: 50%;
         cursor: none;
         width: 60px;
         height: 60px;
-        z-index:20;
-       
-
+        z-index:5;
+        
 }
 
 .box {
@@ -219,27 +214,6 @@ input[type="file"]
         margin-bottom:0px;
 }
 
-/*.box::before {
-color: #fff;
-font-size: 0.8rem;
-position: absolute;
-width: 150px;
-height:105px;
-top: 5px;
-left: 5px;
-}*/
-/*
-.box::after {
-color: #fff;
-font-size: 0.8rem;
-content: attr(data-color);
-position: absolute;
-width: 150px;
-height: 105px;
-bottom: 5px;
-left: 5px;
-}*/
-
 .colorInfo{
         width:197px;
         height:33px;
@@ -253,15 +227,23 @@ left: 5px;
         justify-content: start;
         align-items: center;
         padding-left:15px;
-        border: 1px solid #d2d2d2c7;
+        border: 3px solid #d2d2d2c7;
+        text-transform: uppercase;
 }
-canvas{
-}
+
 .delete-btn{
         position:relative;
-        margin-left:130px;
-        height:20px;
-        width:20px;
-        background-color:white;
+        margin-right:1px;
+        margin-left:auto;
+        height:30px;
+        width:30px;
+        border:none;
+        border-radius: 0px;
+        background-color:black;
         z-index: 1;
+        cursor:pointer;
+}
+.trashImg{
+        width:12;
+        height:14;
 }
