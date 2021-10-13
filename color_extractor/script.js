@@ -240,7 +240,9 @@ function moveGlass()
 //start of an button input
 image_input.addEventListener('change',function()
 {
-       
+
+        //firstly -> clean the area
+        Extractor.ctx.clearRect(0,0,Extractor.canvas.width,Extractor.canvas.height);
         const reader= new FileReader();
         reader.onload = function(e){
                 Extractor.img.src=`${e.target.result}`;
@@ -286,8 +288,9 @@ document.querySelectorAll(".dropZoneInput").forEach((inputElement) => {
 
         dropZoneElement.addEventListener("drop", function(e) {
                 e.preventDefault();
-                console.log(e.dataTransfer.files);
+                
                 if(e.dataTransfer.files.length){
+                        Extractor.ctx.clearRect(0,0,Extractor.canvas.width,Extractor.canvas.height);
                         inputElement.files=e.dataTransfer.files;
                         const reader= new FileReader();
                         reader.onload = function(e){
