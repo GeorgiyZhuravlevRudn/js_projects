@@ -1,0 +1,94 @@
+/*
+display:
+* block - horizontal stack positioning
+        height(without x%) ,width - content height,width(inside a block)
+        fixed-height is bad!!! -> use min/max-height
+        margin effect=max( (on top)margin-bottom:10px; (in bottom)margin-top:20px;)        
+        width:100%; + padding:3 px; = 100%+3px; 1.box-sizing:border-box; -2. use w:auto; with padding!
+
+*flexbox - vertical stack positioning
+        rotate positioning:
+                flex-direction: row/row-reverse; 
+        flex-basis:auto -> width ->height; is bad -> determine flex-basis
+        flex-element: flex-grow: >0; - fills free space ; flex-shrink
+        flex-element:align-self   ; order: num; 
+
+* Fixed interface : not a lot information,
+*/
+
+/* сеточные стили*/
+
+html,body{
+        min-width:1122;
+        min-height:1750px;
+}
+.main-header{
+        margin-bottom:75px;
+}
+.main-navigation{
+        display:flex;
+        flex-direction:column;
+        min-height:285px;
+        justify-content:space-between;
+        align-items:center;
+        background:rgb(175, 175, 175);
+}
+.main-header-logo{
+        order:3;
+        width:368px;
+        height: 153px;
+        display:block;
+        background: white;
+}
+.main-navigation-wrapper{
+        width:100%;
+        background:black;
+}
+.main-navigation-wrapper .container{
+        display:flex;
+        max-width:940px;
+        margin:0 auto;
+        padding: 0 10px;
+        align-items: center;
+        justify-content:space-between;
+
+}
+.site-navigation{
+        width:50%;
+        min-width:400px;
+        display: flex;
+        margin:0;
+        padding:0;
+        list-style: none;
+        background-color:red;
+        justify-content:space-between;
+        place-items: center;
+}
+.user-navigation{
+        margin:0;
+        padding:0;
+        background-color:rgb(47, 178, 230);
+}
+main {
+        display:flex;
+        flex-direction:column;
+        max-width:940px;
+        justify-content:center;
+        align-items: center;
+}
+.features-list{
+        display:flex;
+        max-width:940px;
+        margin:0;
+        padding:0;
+        list-style: none;
+        justify-content:space-between;
+        align-items: center;
+        background-color:green;       
+}
+.feature-item{
+        margin:0 20px;
+        width:300px;
+        min-height:170px;
+        background-color:blue;
+}

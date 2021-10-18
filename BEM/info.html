@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+        <head>
+                <meta charset="UTF-8">
+                <title>info</title>
+                <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=latin,cyrillic" rel="stylesheet">
+                <link href="css/normalize.css" rel="stylesheet">
+                <link href="styles.css" rel="stylesheet">                
+        </head>
+        <body>
+                <p class="block">
+                        In Bem we need to make <span class="block__element">block-element</span> connection
+                </p>
+                <hr>
+                <p class="block">also we can do 
+                        <span class="block__element">
+                                <span class="block__element2">
+                                        that thing
+                                </span>
+                        </span>
+                        <p class="block__element3">
+                                but we can't do the following in css :
+                                .block__element .block__element2{...};
+                        </p>
+                        <p class="block__element4">
+                                because when we'll take block__element2
+                                to another place in .block
+                                it won't work anymore
+                                so, let css be like that : 
+                                .block__element2{...};
+                                <br>
+                                as a result we need every element
+                                has it's own class
+                        </p>
+                </p>
+                <p class="block">
+                        modificators are things that can change our styles :
+                                bool :
+                                - active
+                                - disabled 
+                                - focused
+
+                                key-meaning :
+                                - size--lg
+                        <br> 
+                        Structure :
+                        block-name--modificator-val
+                        block-name__element-name--modificator-val
+                </p>
+                <p class="block">
+                        we can do this too, if we need to use our
+                        <div class="search-form block__search-form">
+                                .search-form 
+                        </div>
+                        later
+                </p>
+                <p class="block">
+                        we can't use margins or paddings etc. in block if it'll change:
+                        <h1 class="title">.title{...};-without m. or p.</h1>
+                        because we'll use it later
+
+                        if we need to do stylize it ->
+                        use the following thing :
+                        <h1 class="title about__title">
+                                .title{...};-without m. or p.
+                                .about__title{margin:..; padding:..; etc.}
+                        </h1>
+                        
+                </p>
+                <p class="block">
+                        class always first
+                </p>
+        </body>
+</html>

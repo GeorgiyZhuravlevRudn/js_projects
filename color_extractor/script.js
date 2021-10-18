@@ -1,3 +1,9 @@
+let sectionClrs=[]; //an array of our current colors (maxLength=9)
+var img_src="";
+moveGlass(); // changes glass position
+const m_glass=document.querySelector('.m-glass');
+const image_input= document.querySelector('#image_input');
+
 const Extractor ={
         canvas: null,
         ctx: null,
@@ -18,7 +24,7 @@ const Extractor ={
                         //Extractor.ctx.clearRect(0,0,cols,rows);
                         Extractor.ctx.drawImage(Extractor.img,0,0);//void (img-src,dx,dy)
                         //getImageData - an array of (r,g,b,a) elements
-                        let imgDataObj= Extractor.ctx.getImageData( //(sx(pixel x coord),sy(pixel y coord),sw,sh)
+                        let imgDataObj=Extractor.ctx.getImageData( //(sx(pixel x coord),sy(pixel y coord),sw,sh)
                                 0,
                                 0,
                                 Extractor.canvas.width,
@@ -26,6 +32,8 @@ const Extractor ={
                         );
                         Extractor.data=imgDataObj.data;//m*n*4(rgba)
                         Extractor.canvas.addEventListener('mousemove', Extractor.getPixel);
+                        console.log(Extractor.canvas.addEventListener('mousemove', Extractor.getPixel)
+                        );                        
                         Extractor.canvas.addEventListener('click', Extractor.addBox);
                 };
         },
@@ -172,12 +180,7 @@ const Extractor ={
 };
 
 
-moveGlass(); // changes glass position 
-let sectionClrs=[]; //an array of our current colors (maxLength=9)
-var img_src="";
-const m_glass=document.querySelector('.m-glass');
-const image_input= document.querySelector('#image_input');
-
+ 
 //start of a magnify function
 function moveGlass()
 {
@@ -294,4 +297,5 @@ document.querySelectorAll(".dropZoneInput").forEach((inputElement) => {
 //end of a drop zone input
 
 //--- input section end--//
+
 document.addEventListener('DOMContentLoaded', Extractor.init);
