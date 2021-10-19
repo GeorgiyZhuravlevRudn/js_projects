@@ -1,0 +1,163 @@
+$backgroundColor:rgb(248, 131, 131);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@300;400;600&family=Raleway:wght@700;900&display=swap');
+%pStyle{
+        font-family:'Open Sans';
+        font-weight:400;
+        font-size:14px;
+        color: #373A39;
+}
+%menu-item{
+        font-family:'Raleway',sans-serif;
+        font-weight: bold;
+        font-size:12px;
+        color:#373A39;
+        text-transform: uppercase;
+}
+%name-item{
+
+}
+.container
+{
+        max-width:1440px;
+        max-height:100%;
+        margin:0 auto;
+        background-color:$backgroundColor;
+}
+.header{
+        
+        min-height:752px;
+        &__top-inner{
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                min-height:94px;
+                background-color:black;
+                padding:0 20px;
+        }
+        &__content-inner{/**fix size problem**/
+                max-width:1440px;
+                min-height:400px;
+                min-width: 1000px;
+                height: auto;/**temporary**/
+                width:100%;
+                display:grid;
+                position:absolute;
+                place-items:center;
+                justify-content:center;
+                grid-template-columns: 100%;
+                grid-template-rows: 120px 20px 20px;
+                margin:10% 0;
+                z-index:1;
+                background-color:transparent;
+                
+        }
+        &__content-title{
+                color:#FFFFFF;
+                font-family:'Montserrat';
+                font-weight:bold;
+                font-size:100px;
+        }
+        &__content-description{
+                color:#FCBB08;
+                font-family:'Montserrat';
+                font-weight:bold;
+                font-size:16px;
+        }
+        &__content-icon{
+                color:#FFFFFF;
+                margin-top:300px;
+        }
+        &__img{
+                width:100%;
+                max-height:658px;
+                z-index:-1;
+                max-width:1440px;
+                opacity: 70%;
+        }
+}
+.logo{
+        display:block;
+        background-color:rgb(152, 16, 243);
+        &__img{
+                width:42px;
+                height:42px;
+        }
+
+}
+.menu{
+        display:block;
+        background-color:rgb(79, 131, 251);
+        &__list{
+                display:flex;
+                background-color:red;
+                flex-direction: row;
+                justify-content:space-around;
+                list-style:none;
+                padding:10px;
+                margin:0;
+        }
+        &__list-item{
+                display:block;
+                margin:0 10px;
+                background-color:white;
+                padding:0;
+                max-width:auto;
+        }
+        &__link{
+                max-width:100%;
+                @extend %menu-item;
+                justify-content:center;
+                text-decoration:none;
+        }
+        &__link--active, &__link:hover{
+                @extend %menu-item;
+                font-weight:900;
+                cursor:pointer;
+                text-decoration:none;
+                border-bottom: solid #FCBB08 2px;
+        }
+}
+.title{
+        font-family:'Montserrat',sans-serif;
+        font-size: 48px;
+        text-transform:lowercase capitalize;
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
+        background-color:rgb(100, 62, 62);
+        width:auto;
+        height:100%;
+        
+        &:before{
+                content: "";
+                background: #FCBB08;
+                position: absolute;
+                height: 60px;
+                width: 4px;
+                margin-left:30px;
+                margin-top:40px;
+                transform: rotate(90deg);
+        }
+        
+}
+.about{
+        
+        max-height:491px;
+        &__inner{
+                margin:0;
+                padding:0 100px;
+                display:grid;
+                align-items: center;
+                justify-content: space-between;
+                grid-template-columns:267px 770px;
+                grid-template-rows: 491px;
+                column-gap:auto;
+                background-color:rgb(161, 211, 163);
+        }
+}
+.pricing{
+        background:black;
+        &__items{
+                margin:10px;
+        }
+}

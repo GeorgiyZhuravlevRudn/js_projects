@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "styles.css",
+	"sources": [
+		"../scss/styles.scss"
+	],
+	"sourcesContent": [
+		"main{\n        p:{\n                margin:10px;\n        }\n}\n.pricing{\n        background:white;\n        &__items{\n                margin:10px;\n        }\n}"
+	],
+	"names": [],
+	"mappings": ";AAAA,AAAA,IAAI,CAAA;EAEY,QAAM,EAAC,IAAI;CAE1B;;;AACD,AAAA,QAAQ,CAAA;EACA,UAAU,EAAC,KAAK;CAIvB;;;AAHQ,AAAD,eAAQ,CAAA;EACA,MAAM,EAAC,IAAI;CAClB"
+}
