@@ -26,6 +26,7 @@ $backgroundColor:rgb(248, 131, 131);
 .header{
         
         min-height:752px;
+        top:0;
         &__top-inner{
                 display:flex;
                 justify-content:space-between;
@@ -118,42 +119,141 @@ $backgroundColor:rgb(248, 131, 131);
         }
 }
 .title{
+        margin:0;
+        padding:0;
         font-family:'Montserrat',sans-serif;
         font-size: 48px;
-        text-transform:lowercase capitalize;
-        display:flex;
-        align-items:center;
-        justify-content:flex-start;
-        background-color:rgb(100, 62, 62);
+        text-transform:lowercase;
+        text-align:start;
         width:auto;
+        height:auto;
+        display:flex;
+        align-items:flex-start;
+        justify-content:flex-start;
+
+        background-color:rgb(100, 62, 62);
+        width:100%;
         height:100%;
-        
         &:before{
                 content: "";
                 background: #FCBB08;
                 position: absolute;
                 height: 60px;
                 width: 4px;
-                margin-left:30px;
-                margin-top:40px;
+                margin-left:28px;
+                margin-top:100px;
                 transform: rotate(90deg);
         }
         
 }
 .about{
-        
+        display:block;
+        margin:0;
+        padding:0;
         max-height:491px;
-        &__inner{
+        background-color:red;
+        &__inner{/**make it align to top**/
                 margin:0;
                 padding:0 100px;
                 display:grid;
-                align-items: center;
+                align-items: start;
                 justify-content: space-between;
                 grid-template-columns:267px 770px;
                 grid-template-rows: 491px;
                 column-gap:auto;
                 background-color:rgb(161, 211, 163);
         }
+        &__text{
+                padding:0;
+                background-color:white;
+        }
+}
+.expertise{
+        display:block;
+        margin:0;
+        padding:0;
+        max-height:877px;
+        &__inner{
+                height:837px;
+                margin:0;
+                padding:0 100px;
+                display:grid;
+                grid-template-rows: 33% 33% 33%;
+                grid-template-columns: 100%;
+                row-gap:auto;
+                align-items: center;
+                justify-content:space-between;
+                background-color:blue;
+        }
+        &__content{
+                display:grid;
+                grid-template-rows:auto;
+                grid-template-columns:30% auto;
+                column-gap:20px;
+                justify-content: space-between;
+                background-color:red;
+                &-items{
+                        display:grid;
+                        grid-template-rows:auto auto auto;
+                        grid-template-columns:100%;
+                        justify-content: space-between;
+                        background-color: #FCBB08;
+                }
+                &-item{
+                        display:flex;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                        background-color:rgb(117, 95, 95);
+                }
+                &-item:after{
+                        content: "";
+                        background: #000000;
+                        position: absolute;
+                        height: 100px;
+                        width: 2px;
+                        margin-left:50px;
+                        margin-top:0px;
+                        transform: rotate(90deg);
+                }
+        }
+        
+        &__services{
+                width:100%;
+                display:grid;
+                grid-template-columns: auto auto auto;
+                grid-template-rows:141px;
+                align-items: center;
+                justify-content: space-between;
+                background-color:green;
+                &-item{
+                        height:auto;
+                        width:auto;
+                        display:grid;
+                        align-items: top;
+                        justify-content:space-between;
+                        grid-template-columns: auto auto;
+                        grid-template-rows:auto;
+                        column-gap:auto;
+                        border-color:black;        
+                }
+                &-container{
+                        margin:0;
+                        padding:0;
+                        background-color:red;
+                
+                }
+                &-title{
+                        margin:0;
+                        padding:0;
+                        background-color:white;
+                }
+                &-img{
+                        background-color: #FCBB08;
+                        width:50px;
+                        height:50px;         
+                }
+        }
+       
 }
 .pricing{
         background:black;
