@@ -127,7 +127,7 @@ $backgroundColor:rgb(248, 131, 131);
         padding:0;
         font-family:'Montserrat',sans-serif;
         font-size: 48px;
-        text-transform:lowercase;
+        text-transform:capitalize;
         display:inline;
         background-color:rgb(100, 62, 62);
        
@@ -166,6 +166,7 @@ $backgroundColor:rgb(248, 131, 131);
                 background-color:black;
 
         }
+
         &__text{
                 padding:0;
                 background-color:white;
@@ -235,12 +236,13 @@ $backgroundColor:rgb(248, 131, 131);
                 display:grid;
                 grid-template-columns:auto auto auto;
                 grid-template-rows:141px;
+                justify-content:space-between;
                 align-items: top;
-                column-gap:5px;
+                column-gap:0px;
                 background-color:green;
                 &-item{
                         margin:0;
-                        width:100%;
+                        max-width:370px;
                         display:grid;
                         align-items: top;
                         justify-content:space-between;
@@ -272,9 +274,257 @@ $backgroundColor:rgb(248, 131, 131);
         }
        
 }
+.features{
+        &__inner{
+                max-height:840px;
+                padding:0;
+                display:grid;
+                align-items:center;
+                justify-content:space-between;
+                grid-template-columns:50% 50%;
+                grid-template-rows:100%;
+                background:#F6F8FA;
+                column-gap:0px;
+        }
+        &__img{
+                height:840px;
+                width:705px;
+        }
+
+        /*center content*/
+        &__content{
+                max-width:470px;
+                max-height:559px;
+                margin:0 auto;
+                display:grid;
+                grid-template-rows:168px 324px;
+                grid-template-columns: 100%;
+                align-items:stretch;
+                justify-content:space-between;
+                background-color:white;
+                row-gap:40px;
+        
+        }
+        &__title{
+                max-height:168px;
+                
+                &:before{
+                        content: "";
+                        background: #FCBB08;
+                        position: absolute;
+                        height: 60px;
+                        width: 4px;
+                        margin-left:30px;
+                        margin-top:100px;
+                        transform: rotate(90deg);
+                }
+        }
+        &__text{
+                margin:0;
+                @extend %pStyle;
+                padding:0 5px;
+                align-items:center;
+                justify-content:space-between;
+                background-color:rgb(110, 110, 163);
+        }
+}
+.portfolio{
+        max-height:1420px;
+        &__header{
+                max-width: 1440px;
+                max-height:388px;
+                padding:0px;
+                display:flex;
+                align-items:center;
+                justify-content:space-between;
+                background-color:rgb(110, 110, 163);
+        }
+        &__buttons{
+                width:566px;
+                display:flex;
+                background-color:red;
+                flex-direction: row;
+                justify-content:space-between;
+                list-style:none;
+                padding:10px;
+                margin:0;
+        }
+        &__btn{
+                background:none;
+                @extend %menu-item;
+                &-all{
+                        margin-top:0px;
+                        width:100%;
+                        height:100px;
+                        text-align:center;
+                        text-transform: uppercase;
+                        font-family: 'Montserrat';
+                        font-weight:bold;
+                        font-size:14px;
+                        color:#242121;
+                        background-color:#F6F8FA;
+                        border:none;
+                        
+                }
+        }
+        &__items{
+                padding:0;
+                max-width:1440px;
+                display:grid;
+                grid-template-columns:auto auto auto auto;
+                align-items:center;
+                justify-content:space-between;
+                grid-template-rows: 100%;
+                background-color:rgb(95, 76, 76);
+
+        }
+        &__item{
+                display:grid;
+                align-items: center;
+                &-img{
+                        display:block;
+                        position: relative;
+                        max-width:343px;
+                        max-height: 912px;
+                         
+                }
+                &-title{
+                        font-size:50px;
+                        text-align:center;
+                        text-transform: uppercase;
+                }
+                &-description{
+                        margin-top:100px;
+                        font-family:'Open Sans';
+                        font-weight: 400;
+                        text-transform:uppercase;
+                        text-align: center;
+
+                }
+                &-title, &-description{
+                        position:absolute;
+                        z-index:1;
+                        background-color:red;
+                }
+        }
+        
+
+}
+
+.testimonials{
+        background-color:black;
+        max-height: 433px;
+        &__inner{
+                height:433px;
+                display:grid;
+                grid-template-columns: 100%;
+                grid-template-rows:auto auto;
+                row-gap:0px;
+                background-color:white;
+        }
+        &__text{
+                display:grid;
+                justify-content:center;
+                align-items:center;
+                text-align: center;
+                padding:30px;
+                margin:0;
+                font-family:'Merriweather';
+                font-style: italic;
+                font-weight:200;
+                font-size:18px;
+                line-height: 30px;
+                background-color:red;
+        }
+        &__author{
+                font-family:'Merriweather';
+                font-style: italic;
+                font-weight:200;
+                color:#9E9E9E;
+                text-align: center;
+                background-color:rgb(126, 121, 121);
+        }
+
+}
+.video{
+        &__content{
+                max-height: 324px;
+                width:1440px;
+        }
+}
+.facts{
+        max-height:431px;
+        &__inner{
+                display:grid;
+                grid-template-rows:431px;
+                grid-template-columns:auto auto auto auto;
+                align-items:center;
+                justify-content:space-around;
+                background-color:white;
+        }
+        &__item{
+                display:flex;
+                text-align: start;
+                flex-direction: column;
+                &-num{
+                        font-style:'Montserrat';
+                        font-weight: bold;
+                        font-size:60px;
+                        color:#242121;
+                }
+                &-name{
+                        font-style:'Open Sans';
+                        font-weight: regular;
+                        font-size:14px;
+                        color:#00B2A0;
+                }
+        }
+}
+.slider{
+        &__item{
+                display:grid;
+                grid-template-columns:auto auto auto auto;
+                grid-template-rows:auto;
+                padding: 100px 0;
+                column-gap:40px;
+                background-color:red;
+                &-img{
+                        width:424px;
+                        height:430px;
+                }
+                &-text{
+                        width:704px;
+                        display:grid;
+                        align-items:center;
+                        grid-template-columns: auto;
+                        grid-template-rows: 200px auto;
+                        row-gap:30px;
+                        
+                        background-color:blue;
+                } 
+                &-title{
+                        display:grid;
+                        align-items: end;
+                        height:100%;
+                        font-family:'Montserrat';
+                        font-size:40px;
+                        font-weight: bold;
+                        background-color:rgb(174, 0, 255);
+                }
+                &-p{
+                        font-family:'Open Sans';
+                        font-size:14px;
+                        font-weight: 200;
+                        line-height: 20px;
+                        height:100%;
+                        background-color:rgb(0, 204, 255);
+                }
+        }
+        
+}
 .pricing{
         background:black;
         &__items{
-                margin:10px;
+                margin:0px;
         }
 }
