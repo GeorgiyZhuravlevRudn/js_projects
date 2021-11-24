@@ -1,0 +1,165 @@
+$primaryFont:'Circe','Arial','sans-serif';
+$primaryColor:#009DAE;
+$primaryColorActive:#0A6344;
+$primaryFontColor:#000;
+$secondaryColor1:#FFFFFF;
+$secondaryColor2:#EAEAEA;
+$elementColor:#FFE652;
+%fontTemplate{
+        padding:0;
+        margin:0;
+        font-size:16px;
+        line-height:18px;
+        font-family: $primaryFont;
+        color:$primaryFontColor;
+        font-style:normal;
+        text-decoration:none;
+
+}
+%paragraphTemplate{
+        padding:0;
+        margin:0;
+        font-size:16px;
+        line-height:18px;
+        font-family: $primaryFont;
+        color:$primaryFontColor;
+        font-style:normal;
+        text-decoration:none;
+}
+body{
+        @extend %fontTemplate;
+        padding:0;
+        margin:0;
+        overflow-x: hidden;
+        background-color:$primaryColor;
+}
+.title{
+        margin:0;
+        font-size:60px;
+        line-height:70px;
+}
+.container{
+        padding:0;
+        margin:0;
+}
+.content{
+
+        background-color:$secondaryColor1;
+        transform-origin:top left;//google it
+        transition: transform .5s linear;
+        padding:0 5vw;
+        margin:0;
+        &__inner{
+                //background-color:gray;
+        }
+        &__img{
+                max-width:100%;
+        }
+}
+
+.content.content--rotated{
+        transform:rotate(-20deg);
+        .content__inner{
+                transform:rotate(0);
+        }
+}
+.container__btn{
+        position:fixed;
+        z-index: 10;
+        top:-100px;
+        left:-100px;
+       background-color:$elementColor;
+       opacity:0.5;
+       display:flex;
+       align-items:center;
+       justify-content:center;
+       width:200px;
+       height: 200px;
+       border-radius: 50%;
+       transition:all .4s ease;
+       border:none;
+       &:focus,
+       &:hover{
+               outline:none;
+       }
+       &:hover{
+        opacity:1;
+       }
+        .crosshair{
+                top:40px;
+                left:40px;
+                position:relative;
+                width:4px;
+                height:25px;
+                transform: rotate(90deg);
+                background-color:#FFFFFF;
+                &::after,&::before{
+                        background-color:#FFFFFF;
+                        position:absolute;
+                        display:block;
+                        content:'';
+                        width:4px;
+                        height:25px;
+                        transition:all 0.3s ease; 
+                }
+                &::before{
+                        transform:translateX(-7px);
+                } 
+                &::after{
+                        transform:translateX(7px);
+                }          
+        }     
+
+}
+.menu{
+        position:fixed;
+        z-index:10;
+        left:0;
+        bottom:0;
+        height:60%;
+        width:15%;
+        transform:translateX(-100%);
+        transition:all .4s ease;
+       // background-color:#FFFFFF;
+        padding:0 2%;
+        &__list{
+                display:flex;
+                flex-direction: column;
+                align-items:flex-start;
+                padding:0;
+                list-style:none;
+                //background-color:gray;
+                &-item{
+                        transform:translateX(-200%); 
+                        transition:all .1s ease;  
+                        cursor:pointer;
+                        &:hover{
+                                color:$elementColor;
+                        }
+                }
+                &-link{
+                        @extend %fontTemplate;
+                        font-size:30px;
+                        line-height:35px;
+                        transition:color .3s ease;
+                        &:hover{
+                                color:$elementColor;
+                        } 
+                }
+        }
+}
+.menu--active{
+        transform:translateX(0);
+        .menu__list{
+                &-item{
+                        transform:translateX(0); 
+                        transition-delay: .1s;
+                }
+                &-item:nth-child(2){
+                        transition-delay: .2s;
+                }
+                &-item:nth-child(3){
+                        transition-delay: .3s;
+                }
+        }
+}

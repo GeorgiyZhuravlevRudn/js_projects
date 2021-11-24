@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700;800;900&display=swap');
+$primaryFont:'Lato','Arial','sans-serif';
+$primaryColor:#ff8484;
+$primaryColorActive:#FF6D6D;
+$primaryFontColor:#533535;
+$primaryFontActive:#311f1f;
+$secondaryColorWhite:#FFFFFF;
+$secondaryColor:#E6CCA9;
+%fontTemplate{
+        font-family:$primaryFont;
+        text-decoration: none;
+        font-size:1vw;
+        line-height:28px;
+        font-weight:400;
+        color:$primaryFontColor;
+}
+%paragraphTemplate{
+        font-family:$primaryFont;
+        text-decoration: none;
+        font-size:16px;
+        line-height:26px;
+        font-weight:500;
+}
+.title{
+        @extend %fontTemplate;
+        font-size:5vw;
+        line-height: 6vw;
+        font-weight:700;
+        margin:0;
+        padding:0;
+}
+body{
+        @extend %fontTemplate;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height:100vh;
+        background-color: $primaryColor;
+}
+.container{
+        background-color: $secondaryColor;
+        display:flex;
+        flex-direction: column;
+        width:50%;
+        padding:7vw 5vw;
+        border-radius: 15px;
+        box-shadow: 0 0 1vw 0.1vw  #311f1fa3;
+        &__title{
+                width:100%;
+                text-align: center;
+        }
+        &__joke{
+                width:90%;
+                height:10vw;
+                font-size: 1.5vw;
+                line-height: 1.8vw;
+                margin:50px auto;
+                overflow-x:hidden ;
+                transition: all 0.5s ease;
+                transform:translateY(0px);
+                opacity:1;
+                &:hover{
+                        color:$primaryFontActive;
+                }
+                &--active{
+                        animation: bounce 2s ease alternate;
+                }
+                
+
+        }
+        &__btn{
+                @extend %fontTemplate;
+                width: 100%;
+                height: 5vw;
+                font-size:3vw;
+                line-height: 3.5vw;
+                background-color:$primaryColor;
+                border:none;
+                border-radius:15px;
+                transition: all 0.3s ease; color:$primaryFontActive;
+                cursor:pointer;
+                &:active{
+                        transform: scale(0.98);
+                }
+                &:hover{
+                        color:$primaryFontActive;
+                        background-color:$primaryColorActive;
+                }
+        }
+}
+
+@keyframes bounce {
+
+        from, 20%, 53%, 80%, to {
+          -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+          animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+      
+        40%, 43% {
+          -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+          animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+          -webkit-transform: translate3d(0, -30px, 0);
+          transform: translate3d(0, -30px, 0);
+        }
+      
+        70% {
+          -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+          animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+          -webkit-transform: translate3d(0, -15px, 0);
+          transform: translate3d(0, -15px, 0);
+        }
+      
+        90% {
+          -webkit-transform: translate3d(0, -4px, 0);
+          transform: translate3d(0, -4px, 0);
+        }
+}
+.bounce {
+        -webkit-animation-name: bounce;
+        animation-name: bounce;
+        -webkit-transform-origin: center bottom;
+        transform-origin: center bottom;
+      }
+.animated {
+        -webkit-animation-duration: 0.5s;
+        animation-duration: 0.5s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+}

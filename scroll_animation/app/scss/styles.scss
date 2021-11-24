@@ -1,0 +1,46 @@
+$primaryFont:'Circe','Arial','sans-serif';
+$primaryColor:#3B8269;
+$primaryColorActive:#0A6344;
+$primaryFontColor:#000000;
+$secondaryColorWhite:#FFFFFF;
+$secondaryColorGray:#EAEAEA;
+%fontTemplate{
+        font-family:$primaryFont;
+        text-decoration: none;
+        font-size:14px;
+        line-height:28px;
+        font-weight:400;
+        color:$primaryFontColor;
+}
+%paragraphTemplate{
+        font-family:$primaryFont;
+        text-decoration: none;
+        font-size:16px;
+        line-height:26px;
+        font-weight:500;
+}
+body{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling-x:hidden; 
+}
+
+.box{
+        display:flex;
+        font-size:8vw;
+        line-height: 10vw;
+        width:80vw;
+        justify-content:center;
+        background-color: $primaryColor;
+        &:not(:first-child){
+                margin-top:3vh;
+        }
+        transform: translateX(400%);
+        transition: transform .5s ease;
+}
+
+.box--show{
+        transform:translateX(0);
+}
